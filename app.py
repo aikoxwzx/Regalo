@@ -112,7 +112,7 @@ with pestaña3:
         st.balloons()
         st.success("¡Acceso concedido! 🔓")
         
-        st.markdown('<div class="glass-card"><h2>Para ti 🎧</h2><p>Dale al play...</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="glass-card"><h2>Para ti </h2><p>Reprodúcelo</p></div>', unsafe_allow_html=True)
         
         
         url_youtube = "https://youtu.be/QU9c0053UAU?si=HPHsxhEKmJ69U3"
@@ -120,18 +120,5 @@ with pestaña3:
 
         st.markdown("<br>", unsafe_allow_html=True)
         
-        try:
-            with open("carta.txt", "r", encoding="utf-8") as file:
-                texto_carta = file.read()
-            
-            st.download_button(
-                label="💌 Descarga tu carta sorpresa aquí",
-                data=texto_carta,
-                file_name="Para_Soysh.txt",
-                mime="text/plain"
-            )
-        except FileNotFoundError:
-            st.info("📝 Si quieres añadir una carta, crea un archivo llamado 'carta.txt' en esta misma carpeta.")
-
     elif intento != "":
         st.error("Acceso denegado. Inténtalo de nuevo.")
