@@ -3,7 +3,7 @@ import streamlit as st
 # 1. Configuración inicial de la página
 st.set_page_config(page_title="Para Soysh", page_icon="💜", layout="centered")
 
-# 2. Inyección de CSS (Fondo morado y efecto de cristal líquido tipo iPhone)
+# 2. Inyección de CSS (Fondo morado y efecto de cristal)
 estilo_css = """
 <style>
 .stApp {
@@ -25,116 +25,121 @@ estilo_css = """
 h1, h2, h3, p, label, .stMarkdown {
     color: #F3E8FF !important;
 }
+/* Estilo para las pestañas */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+}
+.stTabs [data-baseweb="tab"] {
+    color: #F3E8FF;
+}
 </style>
 """
 st.markdown(estilo_css, unsafe_allow_html=True)
 
 # 3. Encabezado principal
-st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Desliza, elige y descubre...</p></div>', unsafe_allow_html=True)
+st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Navega por las pestañas para descubrir todo...</p></div>', unsafe_allow_html=True)
 
-# --- SECCIÓN 1: Formas hacia abajo ---
-st.markdown('<div class="glass-card"><h2>✨ Nivel de amor ✨</h2><p>Elige un número para empezar a bajar...</p></div>', unsafe_allow_html=True)
-numero_bajar = st.slider("Desliza aquí", min_value=1, max_value=50, value=5, key="slider1")
+# --- CREACIÓN DE LAS PESTAÑAS ---
+pestaña1, pestaña2, pestaña3 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🔐 Cofre Secreto"])
 
-for i in range(1, numero_bajar + 1):
-    if i % 2 != 0:
-        texto_escalera = "<br>".join(["Te amo " * j for j in range(1, (i % 5) + 3)])
-        st.markdown(f'<div class="glass-card"><h3>Nivel {i}</h3><p style="line-height: 1.8;">{texto_escalera}</p></div>', unsafe_allow_html=True)
-    else:
-        corazon = f"""
-        <pre style="color: #ff99cc; background: transparent; border: none; font-family: monospace; font-size: 16px;">
-  TeAmoTeAmo   TeAmoTeAmo  
- TeAmoTeAmoTeAmoTeAmoTeAmo 
-TeAmoTeAmoTeAmoTeAmoTeAmoTe
- TeAmoTeAmoTeAmoTeAmoTeAmo 
-  TeAmoTeAmoTeAmoTeAmoTeA  
-    TeAmoTeAmoTeAmoTeAmo   
-      TeAmoTeAmoTeAmo      
-        TeAmoTeAmo         
-           TeAmo           
-             {i}
-        </pre>
-        """
-        st.markdown(f'<div class="glass-card">{corazon}</div>', unsafe_allow_html=True)
+# --- CONTENIDO DE LA PESTAÑA 1 ---
+with pestaña1:
+    st.markdown('<div class="glass-card"><h2>Elige un número para empezar a bajar...</h2></div>', unsafe_allow_html=True)
+    numero_bajar = st.slider("Desliza aquí", min_value=1, max_value=50, value=5, key="slider1")
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+    for i in range(1, numero_bajar + 1):
+        if i % 2 != 0:
+            texto_escalera = "<br>".join(["Te amo " * j for j in range(1, (i % 5) + 3)])
+            st.markdown(f'<div class="glass-card"><h3>Nivel {i}</h3><p style="line-height: 1.8;">{texto_escalera}</p></div>', unsafe_allow_html=True)
+        else:
+            corazon = f"""
+            <pre style="color: #ff99cc; background: transparent; border: none; font-family: monospace; font-size: 16px;">
+      TeAmoTeAmo   TeAmoTeAmo  
+     TeAmoTeAmoTeAmoTeAmoTeAmo 
+    TeAmoTeAmoTeAmoTeAmoTeAmoTe
+     TeAmoTeAmoTeAmoTeAmoTeAmo 
+      TeAmoTeAmoTeAmoTeAmoTeA  
+        TeAmoTeAmoTeAmoTeAmo   
+          TeAmoTeAmoTeAmo      
+            TeAmoTeAmo         
+               TeAmo           
+                 {i}
+            </pre>
+            """
+            st.markdown(f'<div class="glass-card">{corazon}</div>', unsafe_allow_html=True)
 
-# --- SECCIÓN 2: 100 Idiomas ---
-st.markdown('<div class="glass-card"><h2>🌍 Te amo en todo el mundo 🌍</h2><p>Elige un número del 1 al 100</p></div>', unsafe_allow_html=True)
-numero_idiomas = st.slider("¿Cuántos idiomas quieres ver?", min_value=1, max_value=100, value=10, key="slider2")
+# --- CONTENIDO DE LA PESTAÑA 2 ---
+with pestaña2:
+    st.markdown('<div class="glass-card"><h2>Elige un número del 1 al 100</h2></div>', unsafe_allow_html=True)
+    numero_idiomas = st.slider("¿Cuántos idiomas quieres ver?", min_value=1, max_value=100, value=10, key="slider2")
 
-idiomas = [
-    "Español: Te amo", "Inglés: I love you", "Francés: Je t'aime", "Italiano: Ti amo", "Portugués: Eu te amo",
-    "Alemán: Ich liebe dich", "Coreano: Saranghae (사랑해)", "Japonés: Aishiteru (愛してる)", "Mandarín: Wǒ ài nǐ (我爱你)", "Ruso: Ya tebya lyublyu (Я тебя люблю)",
-    "Árabe: Ana bahebak", "Hindi: Main tumse pyar karta hoon", "Holandés: Ik hou van jou", "Sueco: Jag älskar dig", "Noruego: Jeg elsker deg",
-    "Danés: Jeg elsker dig", "Finés: Minä rakastan sinua", "Polaco: Kocham cię", "Checo: Miluji tě", "Eslovaco: Ľúbim ťa",
-    "Húngaro: Szeretlek", "Rumano: Te iubesc", "Búlgaro: Obicham te", "Griego: S'agapo", "Turco: Seni seviyorum",
-    "Hebreo: Ani ohev otakh", "Tailandés: Chan rak khun", "Vietnamita: Anh yêu em", "Indonesio: Aku cinta kamu", "Malayo: Saya cintakan awak",
-    "Tagalo: Mahal kita", "Hawaiano: Aloha wau ia ʻoe", "Swahili: Nakupenda", "Afrikáans: Ek het jou lief", "Zulú: Ngiyakuthanda",
-    "Irlandés: Taim i' ngra leat", "Galés: Rwy'n dy garu di", "Gaélico Escocés: Tha gaol agam ort", "Islandés: Ég elska þig", "Estonio: Ma armastan sind",
-    "Letón: Es tevi mīlu", "Lituano: Aš tave myliu", "Ucraniano: Ya tebe kokhayu", "Bielorruso: Ya cyabe kahayu", "Serbio: Volim te",
-    "Croata: Volim te", "Bosnio: Volim te", "Macedonio: Te sakam", "Albanés: Të dua", "Armenio: Yes kez sirum yem",
-    "Georgiano: Miqvarxar", "Azerbaiyano: Mən səni sevirəm", "Persa: Dooset daram", "Kurdo: Ez te hezdikhem", "Urdu: Mein tumsay pyar karta hon",
-    "Bengalí: Ami tomake bhalobashi", "Tamil: Naan unnai kadhalikkiren", "Telugu: Nenu ninnu premistunnanu", "Kannada: Naanu ninnanna preethisuthene", "Malayalam: Njan ninne premikkunnu",
-    "Cingalés: Mama oyata adarei", "Nepalí: Ma timilai maya garchhu", "Jemer: Bon sro lanh oon", "Lao: Khoi huk chau", "Birmano: Chit pa de",
-    "Tibetano: Nga khyed rang la ga", "Mongol: Bi chamd khairtai", "Kazajo: Men seni jaqsı köremin", "Uzbeko: Men seni sevaman", "Turcomano: Men seni söýýärin",
-    "Kirguís: Men seni süýöm", "Tayiko: Man turo dūst medoram", "Pashto: Za ta sara meena kawom", "Somalí: Waan ku jeclahay", "Amárico: Ewedishalehu",
-    "Yoruba: Mo nife re", "Igbo: A hurum gi n'anya", "Hausa: Ina sonki", "Shona: Ndinokuda", "Tigrinya: Yefkireki'ye",
-    "Malagasy: Tiako ianao", "Samoano: Ou te alofa ia te oe", "Fiyiano: Au domoni iko", "Tahitiano: Ua here vau ia oe", "Maorí: Kei te aroha au ki a koe",
-    "Esperanto: Mi amas vin", "Latín: Te amo", "Catalán: T'estimo", "Gallego: Quérote", "Euskera: Maite zaitut",
-    "Quechua: Cuyayki", "Guaraní: Rohayhu", "Náhuatl: Nimitztlazohtla", "Maya: In yakumech", "Mapudungun: Piwkeyeyu",
-    "Navajo: Ayóó aníníníshní", "Inuktitut: Nagligivaget", "Groenlandés: Asavakit", "Luxemburgués: Ech hunn dech gär", "Maltés: Inhobbok"
-]
+    idiomas = [
+        "Español: Te amo", "Inglés: I love you", "Francés: Je t'aime", "Italiano: Ti amo", "Portugués: Eu te amo",
+        "Alemán: Ich liebe dich", "Coreano: Saranghae (사랑해)", "Japonés: Aishiteru (愛してる)", "Mandarín: Wǒ ài nǐ (我爱你)", "Ruso: Ya tebya lyublyu (Я тебя люблю)",
+        "Árabe: Ana bahebak", "Hindi: Main tumse pyar karta hoon", "Holandés: Ik hou van jou", "Sueco: Jag älskar dig", "Noruego: Jeg elsker deg",
+        "Danés: Jeg elsker dig", "Finés: Minä rakastan sinua", "Polaco: Kocham cię", "Checo: Miluji tě", "Eslovaco: Ľúbim ťa",
+        "Húngaro: Szeretlek", "Rumano: Te iubesc", "Búlgaro: Obicham te", "Griego: S'agapo", "Turco: Seni seviyorum",
+        "Hebreo: Ani ohev otakh", "Tailandés: Chan rak khun", "Vietnamita: Anh yêu em", "Indonesio: Aku cinta kamu", "Malayo: Saya cintakan awak",
+        "Tagalo: Mahal kita", "Hawaiano: Aloha wau ia ʻoe", "Swahili: Nakupenda", "Afrikáans: Ek het jou lief", "Zulú: Ngiyakuthanda",
+        "Irlandés: Taim i' ngra leat", "Galés: Rwy'n dy garu di", "Gaélico Escocés: Tha gaol agam ort", "Islandés: Ég elska þig", "Estonio: Ma armastan sind",
+        "Letón: Es tevi mīlu", "Lituano: Aš tave myliu", "Ucraniano: Ya tebe kokhayu", "Bielorruso: Ya cyabe kahayu", "Serbio: Volim te",
+        "Croata: Volim te", "Bosnio: Volim te", "Macedonio: Te sakam", "Albanés: Të dua", "Armenio: Yes kez sirum yem",
+        "Georgiano: Miqvarxar", "Azerbaiyano: Mən səni sevirəm", "Persa: Dooset daram", "Kurdo: Ez te hezdikhem", "Urdu: Mein tumsay pyar karta hon",
+        "Bengalí: Ami tomake bhalobashi", "Tamil: Naan unnai kadhalikkiren", "Telugu: Nenu ninnu premistunnanu", "Kannada: Naanu ninnanna preethisuthene", "Malayalam: Njan ninne premikkunnu",
+        "Cingalés: Mama oyata adarei", "Nepalí: Ma timilai maya garchhu", "Jemer: Bon sro lanh oon", "Lao: Khoi huk chau", "Birmano: Chit pa de",
+        "Tibetano: Nga khyed rang la ga", "Mongol: Bi chamd khairtai", "Kazajo: Men seni jaqsı köremin", "Uzbeko: Men seni sevaman", "Turcomano: Men seni söýýärin",
+        "Kirguís: Men seni süýöm", "Tayiko: Man turo dūst medoram", "Pashto: Za ta sara meena kawom", "Somalí: Waan ku jeclahay", "Amárico: Ewedishalehu",
+        "Yoruba: Mo nife re", "Igbo: A hurum gi n'anya", "Hausa: Ina sonki", "Shona: Ndinokuda", "Tigrinya: Yefkireki'ye",
+        "Malagasy: Tiako ianao", "Samoano: Ou te alofa ia te oe", "Fiyiano: Au domoni iko", "Tahitiano: Ua here vau ia oe", "Maorí: Kei te aroha au ki a koe",
+        "Esperanto: Mi amas vin", "Latín: Te amo", "Catalán: T'estimo", "Gallego: Quérote", "Euskera: Maite zaitut",
+        "Quechua: Cuyayki", "Guaraní: Rohayhu", "Náhuatl: Nimitztlazohtla", "Maya: In yakumech", "Mapudungun: Piwkeyeyu",
+        "Navajo: Ayóó aníníníshní", "Inuktitut: Nagligivaget", "Groenlandés: Asavakit", "Luxemburgués: Ech hunn dech gär", "Maltés: Inhobbok"
+    ]
 
-idiomas_a_mostrar = idiomas[:numero_idiomas]
-texto_idiomas = "<br>".join(idiomas_a_mostrar)
-st.markdown(f'<div class="glass-card"><p style="font-size: 18px; line-height: 1.6;">{texto_idiomas}</p></div>', unsafe_allow_html=True)
+    idiomas_a_mostrar = idiomas[:numero_idiomas]
+    texto_idiomas = "<br>".join(idiomas_a_mostrar)
+    st.markdown(f'<div class="glass-card"><p style="font-size: 18px; line-height: 1.6;">{texto_idiomas}</p></div>', unsafe_allow_html=True)
 
-st.markdown("<br><br>", unsafe_allow_html=True)
+# --- CONTENIDO DE LA PESTAÑA 3 ---
+with pestaña3:
+    st.markdown('<div class="glass-card"><h2>🔐 Archivos Encriptados 🔐</h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
 
-# --- SECCIÓN 3: El Cofre de Seguridad ---
-st.markdown('<div class="glass-card"><h2>🔐 Archivos Encriptados 🔐</h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
+    contraseña_correcta = "nuestra_fecha" 
+    intento = st.text_input("Contraseña:", type="password")
 
-# Aquí puedes cambiar "nuestra_fecha" por la contraseña que quieras que ella ponga
-contraseña_correcta = "nuestra_fecha" 
-intento = st.text_input("Contraseña:", type="password")
-
-if intento == contraseña_correcta:
-    # Lluvia de globos al acertar
-    st.balloons()
-    
-    st.success("¡Acceso concedido! 🔓")
-    
-    # --- Toque Familiar (Izan) ---
-    st.markdown('<div class="glass-card"><h2>👶 Una sorpresa extra 👶</h2><p>Papi y yo te queremos muchísimo.</p></div>', unsafe_allow_html=True)
-    try:
-        # Aquí puedes poner una foto bonita que hayas hecho con tu iPhone 16
-        st.image("izan.jpg", use_container_width=True)
-    except:
-        st.info("📸 Guarda una foto llamada 'izan.jpg' en esta carpeta para que aparezca aquí.")
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    
-    # --- Final (Video y Carta) ---
-    st.markdown('<div class="glass-card"><h2>Llegaste al final... ❤️</h2></div>', unsafe_allow_html=True)
-
-    try:
-        st.video("video_para_soysh.mp4")
-    except:
-        st.info("🎵 Pon tu video o canción aquí (guarda un archivo llamado 'video_para_soysh.mp4' en esta carpeta).")
-
-    try:
-        with open("carta.txt", "r", encoding="utf-8") as file:
-            texto_carta = file.read()
+    if intento == contraseña_correcta:
+        st.balloons()
+        st.success("¡Acceso concedido! 🔓")
         
-        st.download_button(
-            label="💌 Descarga tu carta sorpresa aquí",
-            data=texto_carta,
-            file_name="Para_Soysh.txt",
-            mime="text/plain"
-        )
-    except FileNotFoundError:
-        st.info("📝 Crea un archivo llamado 'carta.txt' en esta misma carpeta.")
+        st.markdown('<div class="glass-card"><h2>👶 Una sorpresa extra 👶</h2><p>Papi y yo te queremos muchísimo.</p></div>', unsafe_allow_html=True)
+        try:
+            st.image("izan.jpg", use_container_width=True)
+        except:
+            st.info("📸 Guarda una foto llamada 'izan.jpg' en esta carpeta.")
 
-elif intento != "":
-    st.error("Contraseña incorrecta. Inténtalo de nuevo.")
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown('<div class="glass-card"><h2>Llegaste al final... ❤️</h2></div>', unsafe_allow_html=True)
+
+        try:
+            st.video("video_para_soysh.mp4")
+        except:
+            st.info("🎵 Pon tu video o canción aquí (guarda un archivo llamado 'video_para_soysh.mp4' en esta carpeta).")
+
+        try:
+            with open("carta.txt", "r", encoding="utf-8") as file:
+                texto_carta = file.read()
+            
+            st.download_button(
+                label="💌 Descarga tu carta sorpresa aquí",
+                data=texto_carta,
+                file_name="Para_Soysh.txt",
+                mime="text/plain"
+            )
+        except FileNotFoundError:
+            st.info("📝 Crea un archivo llamado 'carta.txt' en esta misma carpeta.")
+
+    elif intento != "":
+        st.error("Contraseña incorrecta. Inténtalo de nuevo.")
