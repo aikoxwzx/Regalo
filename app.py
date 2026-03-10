@@ -34,7 +34,6 @@ h1, h2, h3, p, label, .stMarkdown {
 .stTabs [data-baseweb="tab"] {
     color: #F3E8FF;
 }
-/* Estilo para que el input de número se vea mejor con el fondo oscuro */
 div[data-baseweb="input"] {
     background-color: rgba(255, 255, 255, 0.1) !important;
     border-radius: 10px;
@@ -52,74 +51,21 @@ st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Navega por las p
 # --- CREACIÓN DE LAS PESTAÑAS ---
 pestaña1, pestaña2, pestaña3 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🔐 Cofre Secreto"])
 
-# --- CONTENIDO DE LA PESTAÑA 1 (¡NUEVO SISTEMA DE FORMAS Y SCROLL!) ---
+# --- CONTENIDO DE LA PESTAÑA 1 (NUEVA VERSIÓN TIKTOK) ---
 with pestaña1:
-    st.markdown('<div class="glass-card"><h2>Escribe un número y baja hasta el final...</h2><p>Cuanto más alto, más lejos llegarás.</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="glass-card"><h2>Escribe un número y baja hasta el final...</h2></div>', unsafe_allow_html=True)
     
-    # Cuadro de texto para escribir el número (max 50)
-    numero_bajar = st.number_input("Escribe tu número aquí (1-50):", min_value=1, value=5, step=1, max_value=50)
+    # Cuadro de texto para escribir el número (sin límite máximo)
+    numero_bajar = st.number_input("Escribe tu número aquí:", min_value=1, value=10, step=1)
 
-    # Definir las formas y bloques de texto para cada segmento del recorrido
-    with st.container(height=550):
-        # 1. Segmento de "Flujo" (texto continuo y emojis)
-        def render_flow():
-            for _ in range(10):
-                st.write(f"Te amo {'💖 ' * 3} Soysh {'💜 ' * 3} Aitor {'💕 ' * 3} Mi amor")
+    # Contenedor con scroll
+    with st.container(height=450):
+        # Bucle súper sencillo: "Te amo 1", "Te amo 2", etc.
+        for i in range(1, int(numero_bajar) + 1):
+            st.markdown(f"<p style='text-align: center; font-size: 18px; margin: 5px;'>Te amo {i} 💕</p>", unsafe_allow_html=True)
         
-        # 2. Segmento de "Separación" (palabras sueltas con grandes espacios)
-        def render_separation():
-            for _ in range(10):
-                st.write(f"Te {' ' * 8} Amo {' ' * 8} Soysh {' ' * 8} Juntos {' ' * 8} Por {' ' * 8} Siempre")
-        
-        # 3. Segmento de "Formación - Corazón" (ASCII de corazón detallado hecho con palabras)
-        def render_heart_shape():
-            for _ in range(2):
-                st.markdown(f"""
-                <pre style="color: #ff99cc; background: transparent; border: none; font-family: monospace; font-size: 16px;">
-                 TeAmo        TeAmo          TeAmo        TeAmo
-               TeAmoTeAmoTeAmoTeAmo        TeAmoTeAmoTeAmoTeAmo
-             TeAmoTeAmoTeAmoTeAmoTeAmo    TeAmoTeAmoTeAmoTeAmoTeAmo
-           TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-          TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-           TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-             TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-               TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-                 TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-                   TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-                     TeAmoTeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-                       TeAmoTeAmoTeAmoTeAmoTeAmoTeAmo
-                         TeAmoTeAmoTeAmoTeAmoTeAmo
-                           TeAmoTeAmoTeAmoTeAmo
-                             TeAmoTeAmoTeAmo
-                               TeAmoTeAmo
-                                 TeAmo
-                                  Soysh
-                </pre>
-                """, unsafe_allow_html=True)
-        
-        # 4. Segmento de "Regrupamiento" (palabras volviendo a juntarse, con diferentes emojis)
-        def render_regrouping():
-            for _ in range(10):
-                st.write(f"{'💞 ' * 3} Juntos {'💑 ' * 3} Por {'✨ ' * 3} Siempre {'💖 ' * 3}")
-        
-        # 5. Segmento de "Escalera" (Staircase de "Te Amo" progresivo)
-        def render_staircase():
-            for i in range(1, 11):
-                st.write("Te amo " * i)
-
-        # Determinar cuántos ciclos completos de la secuencia se ejecutarán
-        numero_ciclos = int(numero_bajar)
-
-        # Ejecutar la secuencia de segmentos en bucle
-        for ciclo in range(1, numero_ciclos + 1):
-            render_flow()
-            render_separation()
-            render_heart_shape()
-            render_regrouping()
-            render_staircase()
-        
-        # Mensaje al final de todo el recorrido dentro de la caja
-        st.markdown('<div class="glass-card"><h2 style="color: #ff99cc !important;">¡¡Lo conseguistee!! 🎉</h2></div>', unsafe_allow_html=True)
+        # Mensaje al final del recorrido
+        st.markdown('<br><div class="glass-card"><h2 style="color: #ff99cc !important;">¡¡Lo conseguistee!! 🎉</h2></div>', unsafe_allow_html=True)
 
 
 # --- CONTENIDO DE LA PESTAÑA 2 ---
