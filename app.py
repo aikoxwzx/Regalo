@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 1. Configuración inicial de la página
-st.set_page_config(page_title="Para Soysh", page_icon="💜", layout="centered")
+st.set_page_config(page_title="Para you", page_icon="💜", layout="centered")
 
 # 2. Inyección de CSS (Fondo morado y efecto de cristal)
 estilo_css = """
@@ -62,7 +62,7 @@ with pestaña1:
     with st.container(height=450):
         # Bucle súper sencillo: "Te amo 1", "Te amo 2", etc.
         for i in range(1, int(numero_bajar) + 1):
-            st.markdown(f"<p style='text-align: center; font-size: 18px; margin: 5px;'>Te amo {i} 💕</p>", unsafe_allow_html=True)
+            st.markdown(f"<p style='text-align: center; font-size: 18px; margin: 5px;'>Te amo {i} </p>", unsafe_allow_html=True)
         
         # Mensaje al final del recorrido
         st.markdown('<br><div class="glass-card"><h2 style="color: #ff99cc !important;">¡¡Lo conseguistee!! 🎉</h2></div>', unsafe_allow_html=True)
@@ -110,16 +110,16 @@ with pestaña3:
 
     if intento == contraseña_correcta:
         st.balloons()
-        st.success("¡Acceso concedido! 🔓")
+        st.success("¡Acceso concedido!")
         
-        st.markdown('<div class="glass-card"><h2>👶 Una sorpresa extra 👶</h2><p>Papi y yo te queremos muchísimo.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="glass-card"><h2>Una sorpresa extra </h2><p>Papi y yo te queremos muchísimo.</p></div>', unsafe_allow_html=True)
         try:
             st.image("izan.jpg", use_container_width=True)
         except:
             st.info("📸 Guarda una foto llamada 'izan.jpg' en esta carpeta.")
 
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown('<div class="glass-card"><h2>Llegaste al final... ❤️</h2></div>', unsafe_allow_html=True)
+        st.markdown('<div class="glass-card"><h2>Llegaste al final... </h2></div>', unsafe_allow_html=True)
 
         try:
             st.video("video_para_soysh.mp4")
