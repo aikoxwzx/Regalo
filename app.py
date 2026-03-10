@@ -115,7 +115,7 @@ with pestaña3:
 with pestaña4:
     st.markdown('<div class="glass-card"><h2> Archivos Encriptados </h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
 
-    contraseña_correcta = "nuestra_fecha" 
+    contraseña_correcta = "280725" 
     intento = st.text_input("Contraseña:", type="password")
 
     if intento == contraseña_correcta:
