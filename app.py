@@ -1,7 +1,7 @@
 import streamlit as st
 
 # 1. Configuración inicial de la página
-st.set_page_config(page_title="Para you", page_icon="💜", layout="centered")
+st.set_page_config(page_title="Para ti", page_icon="💜", layout="centered")
 
 # 2. Inyección de CSS (Fondo morado y efecto de cristal)
 estilo_css = """
@@ -48,27 +48,23 @@ st.markdown(estilo_css, unsafe_allow_html=True)
 # 3. Encabezado principal
 st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Navega por las pestañas para descubrir todo...</p></div>', unsafe_allow_html=True)
 
-# --- CREACIÓN DE LAS PESTAÑAS (AHORA SON 4) ---
-pestaña1, pestaña2, pestaña3, pestaña4 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🎬 Videito", "🔐 Cofre Secreto"])
+# --- CREACIÓN DE LAS 3 PESTAÑAS ---
+pestaña1, pestaña2, pestaña3 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🔐 Cofre Secreto"])
 
-# --- CONTENIDO DE LA PESTAÑA 1 (VERSIÓN TIKTOK) ---
+# --- CONTENIDO DE LA PESTAÑA 1 (NIVELES HACIA ABAJO) ---
 with pestaña1:
     st.markdown('<div class="glass-card"><h2>Escribe un número y baja hasta el final...</h2></div>', unsafe_allow_html=True)
     
-    # Cuadro de texto para escribir el número (sin límite máximo)
     numero_bajar = st.number_input("Escribe tu número aquí:", min_value=1, value=10, step=1)
 
-    # Contenedor con scroll
     with st.container(height=450):
-        # Bucle súper sencillo: "Te amo 1", "Te amo 2", etc.
         for i in range(1, int(numero_bajar) + 1):
-            st.markdown(f"<p style='text-align: center; font-size: 18px; margin: 5px;'>Te amo {i} </p>", unsafe_allow_html=True)
+            st.markdown(f"<p style='text-align: center; font-size: 18px; margin: 5px;'>Te amo {i} 💕</p>", unsafe_allow_html=True)
         
-        # Mensaje al final del recorrido
         st.markdown('<br><div class="glass-card"><h2 style="color: #ff99cc !important;">¡¡Lo conseguistee!! 🎉</h2></div>', unsafe_allow_html=True)
 
 
-# --- CONTENIDO DE LA PESTAÑA 2 ---
+# --- CONTENIDO DE LA PESTAÑA 2 (100 IDIOMAS) ---
 with pestaña2:
     st.markdown('<div class="glass-card"><h2>Elige un número del 1 al 100</h2></div>', unsafe_allow_html=True)
     numero_idiomas = st.slider("¿Cuántos idiomas quieres ver?", min_value=1, max_value=100, value=10, key="slider2")
@@ -101,41 +97,26 @@ with pestaña2:
     st.markdown(f'<div class="glass-card"><p style="font-size: 18px; line-height: 1.6;">{texto_idiomas}</p></div>', unsafe_allow_html=True)
 
 
-# --- CONTENIDO DE LA PESTAÑA 3 (NUEVA: YOUTUBE) ---
+# --- CONTENIDO DE LA PESTAÑA 3 (COFRE SECRETO CON VÍDEO DENTRO) ---
 with pestaña3:
-    st.markdown('<div class="glass-card"><h2>Para ti </h2><p>Te lo dedico, baby bu</p></div>', unsafe_allow_html=True)
-    
-    # 👇 CAMBIA EL ENLACE DE ABAJO POR EL VÍDEO DE YOUTUBE QUE QUIERAS 👇
-    url_youtube = "https://youtu.be/QU9c0053UAU?si=lxa89f2dePLvkl1N"
-    
-    st.video(url_youtube)
+    st.markdown('<div class="glass-card"><h2>🔐 Archivos Encriptados 🔐</h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
 
-
-# --- CONTENIDO DE LA PESTAÑA 4 (ANTES ERA LA 3) ---
-with pestaña4:
-    st.markdown('<div class="glass-card"><h2> Archivos Encriptados </h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
-
-    contraseña_correcta = "280725" 
+    # Puedes cambiar "izan" por la contraseña que quieras
+    contraseña_correcta = "izan" 
     intento = st.text_input("Contraseña:", type="password")
 
-    if intento == contraseña_correcta:
+    if intento.lower() == contraseña_correcta.lower():
         st.balloons()
-        st.success("¡Acceso concedido!")
+        st.success("¡Acceso concedido! 🔓")
         
-        st.markdown('<div class="glass-card"><h2>Una sorpresa extra </h2><p>Papi y yo te queremos muchísimo.</p></div>', unsafe_allow_html=True)
-        try:
-            st.image("izan.jpg", use_container_width=True)
-        except:
-            st.info("📸 Guarda una foto llamada 'izan.jpg' en esta carpeta.")
+        st.markdown('<div class="glass-card"><h2>Para ti 🎧</h2><p>Dale al play...</p></div>', unsafe_allow_html=True)
+        
+        
+        url_youtube = "https://youtu.be/QU9c0053UAU?si=HPHsxhEKmJ69U3"
+        st.video(url_youtube)
 
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown('<div class="glass-card"><h2>Llegaste al final... </h2></div>', unsafe_allow_html=True)
-
-        try:
-            st.video("video_para_soysh.mp4")
-        except:
-            st.info("🎵 Pon tu video o canción aquí (guarda un archivo llamado 'video_para_soysh.mp4' en esta carpeta).")
-
+        
         try:
             with open("carta.txt", "r", encoding="utf-8") as file:
                 texto_carta = file.read()
@@ -147,7 +128,7 @@ with pestaña4:
                 mime="text/plain"
             )
         except FileNotFoundError:
-            st.info("📝 Crea un archivo llamado 'carta.txt' en esta misma carpeta.")
+            st.info("📝 Si quieres añadir una carta, crea un archivo llamado 'carta.txt' en esta misma carpeta.")
 
     elif intento != "":
-        st.error("Contraseña incorrecta. Inténtalo de nuevo.")
+        st.error("Acceso denegado. Inténtalo de nuevo.")
