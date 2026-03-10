@@ -48,10 +48,10 @@ st.markdown(estilo_css, unsafe_allow_html=True)
 # 3. Encabezado principal
 st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Navega por las pestañas para descubrir todo...</p></div>', unsafe_allow_html=True)
 
-# --- CREACIÓN DE LAS PESTAÑAS ---
-pestaña1, pestaña2, pestaña3 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🔐 Cofre Secreto"])
+# --- CREACIÓN DE LAS PESTAÑAS (AHORA SON 4) ---
+pestaña1, pestaña2, pestaña3, pestaña4 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🎬 Videito", "🔐 Cofre Secreto"])
 
-# --- CONTENIDO DE LA PESTAÑA 1 (NUEVA VERSIÓN TIKTOK) ---
+# --- CONTENIDO DE LA PESTAÑA 1 (VERSIÓN TIKTOK) ---
 with pestaña1:
     st.markdown('<div class="glass-card"><h2>Escribe un número y baja hasta el final...</h2></div>', unsafe_allow_html=True)
     
@@ -101,8 +101,18 @@ with pestaña2:
     st.markdown(f'<div class="glass-card"><p style="font-size: 18px; line-height: 1.6;">{texto_idiomas}</p></div>', unsafe_allow_html=True)
 
 
-# --- CONTENIDO DE LA PESTAÑA 3 ---
+# --- CONTENIDO DE LA PESTAÑA 3 (NUEVA: YOUTUBE) ---
 with pestaña3:
+    st.markdown('<div class="glass-card"><h2>Para ti 🎧</h2><p>Dale al play...</p></div>', unsafe_allow_html=True)
+    
+    # 👇 CAMBIA EL ENLACE DE ABAJO POR EL VÍDEO DE YOUTUBE QUE QUIERAS 👇
+    url_youtube = "https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+    
+    st.video(url_youtube)
+
+
+# --- CONTENIDO DE LA PESTAÑA 4 (ANTES ERA LA 3) ---
+with pestaña4:
     st.markdown('<div class="glass-card"><h2> Archivos Encriptados </h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
 
     contraseña_correcta = "nuestra_fecha" 
