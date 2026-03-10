@@ -25,7 +25,6 @@ estilo_css = """
 h1, h2, h3, p, label, .stMarkdown {
     color: #F3E8FF !important;
 }
-/* Estilo para las pestañas */
 .stTabs [data-baseweb="tab-list"] {
     gap: 10px;
     background-color: rgba(255, 255, 255, 0.1);
@@ -34,6 +33,14 @@ h1, h2, h3, p, label, .stMarkdown {
 }
 .stTabs [data-baseweb="tab"] {
     color: #F3E8FF;
+}
+/* Estilo para que el input de número se vea mejor con el fondo oscuro */
+div[data-baseweb="input"] {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px;
+}
+input {
+    color: white !important;
 }
 </style>
 """
@@ -45,31 +52,39 @@ st.markdown('<div class="glass-card"><h1>Para Soysh 💜</h1><p>Navega por las p
 # --- CREACIÓN DE LAS PESTAÑAS ---
 pestaña1, pestaña2, pestaña3 = st.tabs(["✨ Nivel de amor", "🌍 100 Idiomas", "🔐 Cofre Secreto"])
 
-# --- CONTENIDO DE LA PESTAÑA 1 ---
+# --- CONTENIDO DE LA PESTAÑA 1 (¡MODIFICADA!) ---
 with pestaña1:
-    st.markdown('<div class="glass-card"><h2>Elige un número para empezar a bajar...</h2></div>', unsafe_allow_html=True)
-    numero_bajar = st.slider("Desliza aquí", min_value=1, max_value=50, value=5, key="slider1")
+    st.markdown('<div class="glass-card"><h2>Escribe un número y baja hasta el final...</h2></div>', unsafe_allow_html=True)
+    
+    # Cuadro de texto para escribir el número
+    numero_bajar = st.number_input("Escribe tu número aquí:", min_value=1, value=5, step=1)
 
-    for i in range(1, numero_bajar + 1):
-        if i % 2 != 0:
-            texto_escalera = "<br>".join(["Te amo " * j for j in range(1, (i % 5) + 3)])
-            st.markdown(f'<div class="glass-card"><h3>Nivel {i}</h3><p style="line-height: 1.8;">{texto_escalera}</p></div>', unsafe_allow_html=True)
-        else:
-            corazon = f"""
-            <pre style="color: #ff99cc; background: transparent; border: none; font-family: monospace; font-size: 16px;">
-      TeAmoTeAmo   TeAmoTeAmo  
-     TeAmoTeAmoTeAmoTeAmoTeAmo 
-    TeAmoTeAmoTeAmoTeAmoTeAmoTe
-     TeAmoTeAmoTeAmoTeAmoTeAmo 
-      TeAmoTeAmoTeAmoTeAmoTeA  
-        TeAmoTeAmoTeAmoTeAmo   
-          TeAmoTeAmoTeAmo      
-            TeAmoTeAmo         
-               TeAmo           
-                 {i}
-            </pre>
-            """
-            st.markdown(f'<div class="glass-card">{corazon}</div>', unsafe_allow_html=True)
+    # Contenedor con altura fija que crea el "cuadro con scroll" donde no se puede escribir
+    with st.container(height=450):
+        for i in range(1, int(numero_bajar) + 1):
+            if i % 2 != 0:
+                texto_escalera = "<br>".join(["Te amo " * j for j in range(1, (i % 5) + 3)])
+                st.markdown(f'<div class="glass-card"><h3>Nivel {i}</h3><p style="line-height: 1.8;">{texto_escalera}</p></div>', unsafe_allow_html=True)
+            else:
+                corazon = f"""
+                <pre style="color: #ff99cc; background: transparent; border: none; font-family: monospace; font-size: 16px;">
+          TeAmoTeAmo   TeAmoTeAmo  
+         TeAmoTeAmoTeAmoTeAmoTeAmo 
+        TeAmoTeAmoTeAmoTeAmoTeAmoTe
+         TeAmoTeAmoTeAmoTeAmoTeAmo 
+          TeAmoTeAmoTeAmoTeAmoTeA  
+            TeAmoTeAmoTeAmoTeAmo   
+              TeAmoTeAmoTeAmo      
+                TeAmoTeAmo         
+                   TeAmo           
+                     {i}
+                </pre>
+                """
+                st.markdown(f'<div class="glass-card">{corazon}</div>', unsafe_allow_html=True)
+        
+        # Mensaje al final del recorrido dentro de la caja
+        st.markdown('<div class="glass-card"><h2 style="color: #ff99cc !important;">¡¡Lo conseguistee!! 🎉</h2></div>', unsafe_allow_html=True)
+
 
 # --- CONTENIDO DE LA PESTAÑA 2 ---
 with pestaña2:
@@ -102,6 +117,7 @@ with pestaña2:
     idiomas_a_mostrar = idiomas[:numero_idiomas]
     texto_idiomas = "<br>".join(idiomas_a_mostrar)
     st.markdown(f'<div class="glass-card"><p style="font-size: 18px; line-height: 1.6;">{texto_idiomas}</p></div>', unsafe_allow_html=True)
+
 
 # --- CONTENIDO DE LA PESTAÑA 3 ---
 with pestaña3:
