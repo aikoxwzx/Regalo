@@ -150,4 +150,4 @@ with pestaña4:
             st.info("📝 Crea un archivo llamado 'carta.txt' en esta misma carpeta.")
 
     elif intento != "":
-        st.error("Contraseña incorrecta. Inténtalo de nuevo."
+        st.error("Contraseña incorrecta. Inténtalo de nuevo.")
