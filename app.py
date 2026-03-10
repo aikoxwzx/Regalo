@@ -106,7 +106,7 @@ with pestaña3:
     st.markdown('<div class="glass-card"><h2>Para ti </h2><p>Te lo dedico, baby bu</p></div>', unsafe_allow_html=True)
     
     # 👇 CAMBIA EL ENLACE DE ABAJO POR EL VÍDEO DE YOUTUBE QUE QUIERAS 👇
-    url_youtube = "https://www.youtube.com/watch?v=iCKZWcXXRh4"
+    url_youtube = "https://youtu.be/QU9c0053UAU?si=lxa89f2dePLvkl1N"
     
     st.video(url_youtube)
 
