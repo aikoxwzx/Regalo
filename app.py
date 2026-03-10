@@ -34,12 +34,15 @@ h1, h2, h3, p, label, .stMarkdown {
 .stTabs [data-baseweb="tab"] {
     color: #F3E8FF;
 }
+/* AQUÍ ESTÁ EL CAMBIO: Fondo claro y texto negro fuerte para que se lea perfecto */
 div[data-baseweb="input"] {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.85) !important;
     border-radius: 10px;
 }
 input {
-    color: white !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-weight: bold !important;
 }
 </style>
 """
