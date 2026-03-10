@@ -103,7 +103,7 @@ with pestaña2:
 
 # --- CONTENIDO DE LA PESTAÑA 3 (NUEVA: YOUTUBE) ---
 with pestaña3:
-    st.markdown('<div class="glass-card"><h2>Para ti </h2><p>Reprodúcelo</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="glass-card"><h2>Para ti </h2><p>Te lo dedico, baby bu</p></div>', unsafe_allow_html=True)
     
     # 👇 CAMBIA EL ENLACE DE ABAJO POR EL VÍDEO DE YOUTUBE QUE QUIERAS 👇
     url_youtube = "https://www.youtube.com/watch?v=iCKZWcXXRh4"
