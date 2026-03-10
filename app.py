@@ -102,7 +102,7 @@ with pestaña3:
     st.markdown('<div class="glass-card"><h2>🔐 Archivos Encriptados 🔐</h2><p>Introduce la contraseña para desencriptar el mensaje final.</p></div>', unsafe_allow_html=True)
 
     # Puedes cambiar "izan" por la contraseña que quieras
-    contraseña_correcta = "izan" 
+    contraseña_correcta = "280725" 
     intento = st.text_input("Contraseña:", type="password")
 
     if intento.lower() == contraseña_correcta.lower():
