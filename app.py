@@ -106,7 +106,7 @@ with pestaña3:
     st.markdown('<div class="glass-card"><h2>Para ti 🎧</h2><p>Dale al play...</p></div>', unsafe_allow_html=True)
     
     # 👇 CAMBIA EL ENLACE DE ABAJO POR EL VÍDEO DE YOUTUBE QUE QUIERAS 👇
-    url_youtube = "https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+    url_youtube = "https://www.youtube.com/watch?v=iCKZWcXXRh4"
     
     st.video(url_youtube)
 
@@ -150,4 +150,4 @@ with pestaña4:
             st.info("📝 Crea un archivo llamado 'carta.txt' en esta misma carpeta.")
 
     elif intento != "":
-        st.error("Contraseña incorrecta. Inténtalo de nuevo.")
+        st.error("Contraseña incorrecta. Inténtalo de nuevo."
